@@ -2,6 +2,13 @@ d3.json('data',
     function(data) {
         data = data['data'] //data, data and also data :)
 
+        var updatedata = function() {
+            var name = d3.select(this).attr('id');
+            $('.pulsarname').html(name)
+        }
+        var removedata = function() {
+            $('.pulsarname').html('')
+        }
 
         var periods = [];
         for (i = 0; i < data.length; i++) {
@@ -83,11 +90,17 @@ d3.json('data',
             .data(data)
             .enter()
             .append("circle")
+            .attr("class", "datapoint")
+            .attr("id", function(d) {
+                return d['Pulsar']
+            })
             .attr("cx", function(d, i) {
                 return xscale(d['Period']);
             })
             .attr("cy", function(d, i) {
                 return yscale(Math.log10(d['Period Derivative']));
             })
-            .attr("r", 2.5);
+            .attr("r", 2.5)
+            .on("mouseover", updatedata)
+            .on("mouseout", removedata);
     });

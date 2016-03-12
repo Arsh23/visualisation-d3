@@ -7,16 +7,20 @@
     <!-- d3.js -->
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <!-- custom css -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/graph.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/materialform.css') }}">
 
-
+    <!-- custom js -->
     <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
-
+    
 
 </head>
 
@@ -66,12 +70,38 @@
                 <div class='graph'></div>
             </div>
             <div class='col-sm-4 infobox'>
-                <div class='info'></div>
+                <div class='info'>
+                    <p class='infotext'>Pulsar Name :<span class='infodata pulsarname'>kasdgajshgda</span></p>
+                    <p class='infotext'>Times of Arrival :<span class='infodata toa'></span></p>
+                    <p class='infotext'>Raw Profiles :<span class='infodata raw'></span></p>
+                    <p class='infotext'>Period :<span class='infodata period'></span></p>
+                    <p class='infotext'>Period Derivative :<span class='infodata pd'></span></p>
+                    <p class='infotext'>Dispersion Measure :<span class='infodata dm'></span></p>
+                    <p class='infotext'>Timing Residuals :<span class='infodata rms'></span></p>
+                    <p class='infotext'>Binary System :<span class='infodata binary'></span></p>
+                </div>
             </div>
         </div>
     </div>
 
     </div>
+    <!-- <form>
+
+        <div class="group">
+            <input type="text" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Name</label>
+        </div>
+
+        <div class="group">
+            <input type="text" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email</label>
+        </div>
+
+    </form> -->
 
 
 

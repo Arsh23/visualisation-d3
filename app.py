@@ -12,8 +12,6 @@ def home():
 @app.route('/data', methods=['GET'])
 def data():
     global json
-    r = requests.get('http://msi.mcgill.ca/GSoC_NANOGrav/pulsar_data_test.json')
-    json = r.json()
     return jsonify({'data':json})
 
 @app.route('/data/<name>', methods=['GET'])
@@ -23,4 +21,8 @@ def info(name):
     return name
 
 if __name__ == '__main__':
+    global json
+    r = requests.get('http://msi.mcgill.ca/GSoC_NANOGrav/pulsar_data_test.json')
+    json = r.json()
+    print 'loading json'
     app.run(debug=True)

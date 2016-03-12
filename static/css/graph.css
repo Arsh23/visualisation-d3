@@ -12,7 +12,7 @@ body {
     stroke: #000;
     shape-rendering: crispEdges;
 }
-.titlebox{
+.titlebox {
     padding-left: 40px;
     padding-right: 40px;
 }
@@ -34,5 +34,21 @@ body {
     background-color: white;
 }
 .info {
-    background-color: grey;
+    background-color: #E0E0E0;
+    padding: 20px 20px 20px 20px;
+}
+.infotext {
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 15px;
+    background-color: #EEEEEE;
+    font-weight: normal;
+    font-family: 'Roboto', sans-serif;
+    /*color: #5264AE;*/
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    /*transition: all 0.2s ease-in-out;*/
+}
+.infodata{
+    padding-left: 5px;
+    color: #33691E;
 }
