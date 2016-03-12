@@ -9,3 +9,7 @@
     stroke: #000;
     shape-rendering: crispEdges;
 }
+
+.no-curve{
+    border-radius: none;
+}
