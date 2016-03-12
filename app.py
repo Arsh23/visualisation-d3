@@ -1,20 +1,26 @@
-from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from flask import Flask, request, session, g, redirect, url_for, render_template, jsonify
 import requests
 import json
 
 app = Flask(__name__)
+json = []
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('graph.html')
 
-@app.route('/sample')
-def sample():
+@app.route('/data', methods=['GET'])
+def data():
+    global json
     r = requests.get('http://msi.mcgill.ca/GSoC_NANOGrav/pulsar_data_test.json')
-    data = r.json()
-    print data[0]
-    return str(data[0]['Pulsar'])
+    json = r.json()
+    return jsonify({'data':json})
 
+@app.route('/data/<name>', methods=['GET'])
+def info(name):
+    global json
+    print json[0]
+    return name
 
 if __name__ == '__main__':
     app.run(debug=True)
