@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+</head>
+
+
+<body>
+
+    <script>
+        d3.json('./pulsar_data_test.json',
+            function(data) {
+                console.log(data);
+                d3.select('body').append('p').text(data['Pulsar'])
+
+                var width = 500;
+                var height = 500;
+
+                // var xvalue = function(d) {
+                //     return data.;
+                // }
+                var xscale = d3.scale.linear()
+                    .domain([0, 100])
+                    .range([0, width]);
+                var xAxis = d3.svg.axis()
+                    .scale(xscale)
+                    .orient("bottom");
+
+                // var yvalue = function(d) {
+                //     return d.Calories;
+                // }
+                var yscale = d3.scale.log()
+                    .base(Math.E)
+                    .domain([Math.exp(0), Math.exp(9)])
+                    .range([height, 0]);
+                var yAxis = d3.svg.axis()
+                    .scale(yscale)
+                    .orient("left")
+
+
+                var canvas = d3.select('body')
+                    .append('svg')
+                    .attr('width', width)
+                    .attr('height', height)
+                    .attr("transform", "translate(100,100)")
+
+                canvas.append("g")
+                    .attr("class", "axis axis--y")
+                    .attr("transform", "translate(-10,0)")
+                    .call(yAxis);
+
+                canvas.append("g")
+                    .attr("class", "axis axis--x")
+                    .attr("transform", "translate(0," + (height + 10) + ")")
+                    .call(xAxis);
+
+            });
+    </script>
+
+
+</body>
+
+
+</html>
