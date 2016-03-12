@@ -17,8 +17,22 @@ def data():
 @app.route('/data/<name>', methods=['GET'])
 def info(name):
     global json
-    print json[0]
-    return name
+    returnjson = {}
+    for j in json:
+        if j['Pulsar'] == name:
+            returnjson['Pulsar'] = name
+            returnjson['TOAs'] = j['TOAs']
+            returnjson['Raw Profiles'] = j['Raw Profiles']
+            returnjson['Period'] = str(j['Period']) + ' s'
+            returnjson['Period Derivative'] = str(j['Period Derivative']) + ' s/s'
+            returnjson['DM'] = str(j['DM']) + ' pc/cc'
+            returnjson['RMS'] = str(j['RMS']) + ' us'
+            if j['Binary'] == 'Y':
+                returnjson['Binary'] = 'Yes'
+            else:
+                returnjson['Binary'] = 'No'
+            break
+    return jsonify(returnjson)
 
 if __name__ == '__main__':
     global json

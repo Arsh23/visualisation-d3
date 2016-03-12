@@ -5,9 +5,28 @@ d3.json('data',
         var updatedata = function() {
             var name = d3.select(this).attr('id');
             $('.pulsarname').html(name)
+            $.ajax({
+                    url: "/data/" + name,
+                })
+                .done(function(data) {
+                    $('.toa').html(data['TOAs'])
+                    $('.raw').html(data['Raw Profiles'])
+                    $('.period').html(data['Period'])
+                    $('.pd').html(data['Period Derivative'])
+                    $('.dm').html(data['DM'])
+                    $('.rms').html(data['RMS'])
+                    $('.binary').html(data['Binary'])
+                });
         }
         var removedata = function() {
             $('.pulsarname').html('')
+            $('.toa').html('')
+            $('.raw').html('')
+            $('.period').html('')
+            $('.pd').html('')
+            $('.dm').html('')
+            $('.rms').html('')
+            $('.binary').html('')
         }
 
         var periods = [];
