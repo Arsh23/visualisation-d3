@@ -3,6 +3,9 @@ d3.json('data',
         data = data['data'] //data, data and also data :)
 
         var updatedata = function() {
+            var circle = d3.select(this);
+            circle.transition().duration(150)
+                .attr("r", 6);
             var name = d3.select(this).attr('id');
             $('.pulsarname').html(name)
             $.ajax({
@@ -19,6 +22,9 @@ d3.json('data',
                 });
         }
         var removedata = function() {
+            var circle = d3.select(this);
+            circle.transition().duration(150)
+                .attr("r", 2.5);
             $('.pulsarname').html('')
             $('.toa').html('')
             $('.raw').html('')
@@ -51,7 +57,7 @@ d3.json('data',
             width = basewidth - margin.left - margin.right,
             height = baseheight - margin.top - margin.bottom;
 
-
+        // x related values
         var xvalue = function(d) {
                 return data['Period'];
             },
@@ -68,6 +74,7 @@ d3.json('data',
             })
             .orient("bottom");
 
+        // y related values
         var yvalue = function(d) {
                 return d['Period Derivative'];
             },
@@ -120,6 +127,14 @@ d3.json('data',
                 return yscale(Math.log10(d['Period Derivative']));
             })
             .attr("r", 2.5)
+            .attr("opacity", 0.75)
+            .style('fill', function(d) {
+                if (d['Binary'] == 'Y') {
+                    return '#FF3D00'
+                } else {
+                    return '#3D5AFE'
+                }
+            })
             .on("mouseover", updatedata)
             .on("mouseout", removedata);
     });

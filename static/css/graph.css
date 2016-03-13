@@ -5,7 +5,8 @@ body {
     background-color: white;
 }
 .axis text {
-    font: 10px sans-serif;
+    /*font: 10px sans-serif;*/
+    font-family: 'Anaheim', sans-serif;
 }
 .axis path, .axis line {
     fill: none;
@@ -34,21 +35,22 @@ body {
     background-color: white;
 }
 .info {
-    background-color: #E0E0E0;
+    background-color: white;
+    /*background-color: #E0E0E0;*/
     padding: 20px 20px 20px 20px;
 }
 .infotext {
     font-size: 18px;
-    padding: 10px 10px 10px 10px;
-    margin-bottom: 15px;
-    background-color: #EEEEEE;
+    padding: 5px 10px 10px 5px;
+    /*margin-bottom: 15px;*/
+    /*background-color: #EEEEEE;*/
     font-weight: normal;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Anaheim', sans-serif;
     /*color: #5264AE;*/
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);*/
     /*transition: all 0.2s ease-in-out;*/
 }
-.infodata{
+.infodata {
     padding-left: 5px;
     color: #33691E;
 }
