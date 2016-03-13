@@ -17,7 +17,7 @@ var graph = d3.json('data',
                 selectedcircle
                     .transition()
                     .duration(150)
-                    .attr('r',8)
+                    .attr('r', 8)
                     .style('fill', '#00C853')
                     .style('stroke-width', 2)
                     .style('stroke', 'rgba(0,0,0,0.25)')
@@ -31,7 +31,6 @@ var graph = d3.json('data',
                 circle.transition()
                     .duration(150)
                     .attr("r", 6)
-                    // .style('fill',
                 var name = d3.select(this).attr('id');
                 $('.pulsarname').html(name)
                 $.ajax({
@@ -323,3 +322,24 @@ var graph = d3.json('data',
         initializegraph()
         updategraph()
     });
+
+// $(document).on('click', '.btn-hide',
+//     function() {
+//         if (selected == 'none') {
+//             var circle = d3.select(this);
+//             circle.transition().duration(150)
+//                 .attr("r", 2.5)
+//                 .style('fill', selectedcirclecolor)
+//                 .style('stroke-width', 0)
+//                 .style('stroke', 'rgba(0,0,0,0)');
+//             $('.pulsarname').html('')
+//             $('.toa').html('')
+//             $('.raw').html('')
+//             $('.period').html('')
+//             $('.pd').html('')
+//             $('.dm').html('')
+//             $('.rms').html('')
+//             $('.binary').html('')
+//         }
+//     }
+// );

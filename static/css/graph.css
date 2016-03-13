@@ -45,7 +45,7 @@ body {
 }
 .infotext {
     font-size: 18px;
-    padding: 5px 10px 10px 5px;
+    padding: 5px 10px 5px 5px;
     /*margin-bottom: 15px;*/
     /*background-color: #EEEEEE;*/
     font-weight: normal;
@@ -68,6 +68,10 @@ body {
 }
 .info-3 {
     display: none;
+    font-family: 'Anaheim', sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 15px;
 }
 .input-group{
     margin-top: 10px;
