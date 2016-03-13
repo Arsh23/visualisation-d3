@@ -34,6 +34,26 @@ def info(name):
             break
     return jsonify(returnjson)
 
+@app.route('/add/', methods=['GET', 'POST'])
+def add():
+    global json
+    addjson = {}
+    if request.method == 'POST':
+        print request.form
+        addjson['Pulsar'] = request.form['Pulsar']
+        addjson['TOAs'] = request.form['TOAs']
+        addjson['Raw Profiles'] = request.form['Raw Profiles']
+        addjson['Period'] = request.form['Period']
+        addjson['Period Derivative'] = request.form['Period Derivative']
+        addjson['DM'] = request.form['DM']
+        addjson['RMS'] = request.form['RMS']
+        addjson['Binary'] = request.form['Binary']
+        json.append(addjson)
+        print json
+        return redirect('/')
+    else:
+        return 'error'
+
 if __name__ == '__main__':
     global json
     r = requests.get('http://msi.mcgill.ca/GSoC_NANOGrav/pulsar_data_test.json')

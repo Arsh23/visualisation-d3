@@ -18,7 +18,7 @@
 
     <!-- custom css -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/graph.css') }}">
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/materialform.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/form.css') }}">
 
     <!-- custom js -->
     <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
@@ -91,26 +91,47 @@
                         <p class='infotext'>Binary System :<span class='infodata binary'></span></p>
                     </div>
                     <div class='info-2'>
-                        <form>
-
-                            <div class="group">
-                                <input type="text" required>
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Name</label>
+                        <form class='send' method='post' action='/add/'>
+                            <div class="input-group spc2">
+                                <span class="input-group-addon" id="basic-addon1">Pulsar Name :</span>
+                                <input type="text" class="form-control" name='Pulsar'>
                             </div>
-
-                            <div class="group">
-                                <input type="text" required>
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Email</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Times of Arrival :</span>
+                                <input type="text" class="form-control" name='TOAs'>
                             </div>
-
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Raw Profiles :</span>
+                                <input type="text" class="form-control" name='Raw Profiles'>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Period :</span>
+                                <input type="text" class="form-control" name='Period'>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Period Derivative :</span>
+                                <input type="text" class="form-control" name='Period Derivative'>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Dispersion Measure :</span>
+                                <input type="text" class="form-control" name='DM'>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Timing Residuals :</span>
+                                <input type="text" class="form-control" name='RMS'>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Binary System :</span>
+                                <input type="text" class="form-control" name='Binary'>
+                            </div>
+                            <center class='spc'>
+                                <button type="submit" id='submit' class="btn btn-primary"> Generate </button>
+                            </center>
                         </form>
                     </div>
                     <div class='info-3'>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                 </div>
             </div>
@@ -118,24 +139,6 @@
     </div>
 
     </div>
-    <!-- <form>
-
-        <div class="group">
-            <input type="text" required>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Name</label>
-        </div>
-
-        <div class="group">
-            <input type="text" required>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Email</label>
-        </div>
-
-    </form> -->
-
 
 
 </body>

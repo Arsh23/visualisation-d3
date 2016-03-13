@@ -1,7 +1,8 @@
 var graph = d3.json('data',
     function(data) {
         data = data['data'] //data, data and also data :)
-
+        // console.log(data)
+        
         var updatedata = function() {
             var circle = d3.select(this);
             circle.transition()
@@ -57,6 +58,7 @@ var graph = d3.json('data',
             },
             width = basewidth - margin.left - margin.right,
             height = baseheight - margin.top - margin.bottom;
+
 
         // x related values init
         var xscale = d3.scale.log()
