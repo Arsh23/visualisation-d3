@@ -1,6 +1,9 @@
 body {
     background: #eeeded;
 }
+.navbar{
+    margin-bottom: 0px;
+}
 .points {
     background-color: white;
 }
