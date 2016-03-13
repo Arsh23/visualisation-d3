@@ -23,7 +23,7 @@
     <!-- custom js -->
     <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    
+
 
 
 </head>
@@ -90,6 +90,11 @@
                         <p class='infotext'>Dispersion Measure :<span class='infodata dm'></span></p>
                         <p class='infotext'>Timing Residuals :<span class='infodata rms'></span></p>
                         <p class='infotext'>Binary System :<span class='infodata binary'></span></p>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-hide btn-default"> Hide Info </button>
+                            <button type="button" class="btn btn-delete btn-default">Delete Node</button>
+
+                        </div>
                     </div>
                     <div class='info-2'>
                         <form class='send' method='post' action='/add/'>
@@ -126,7 +131,7 @@
                                 <input type="text" class="form-control" name='Binary'>
                             </div>
                             <center class='spc'>
-                                <button type="submit" id='submit' class="btn btn-primary"> Generate </button>
+                                <button type="submit" id='submit' class="btn btn-primary"> Add to Graph </button>
                             </center>
                         </form>
                     </div>
