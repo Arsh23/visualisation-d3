@@ -148,14 +148,6 @@ d3.json('data',
                 .attr("id", function(d) {
                     return d['Pulsar']
                 })
-                .attr("cx", function(d, i) {
-                    return xscale(d['Period']);
-                })
-                .attr("cy", function(d, i) {
-                    return yscale(Math.log10(d['Period Derivative']));
-                })
-                .attr("r", 2.5)
-                .attr("opacity", 0.75)
                 .style('fill', function(d) {
                     if (d['Binary'] == 'Y') {
                         return '#FF3D00'
@@ -163,9 +155,25 @@ d3.json('data',
                         return '#3D5AFE'
                     }
                 })
-                .on("mouseover", updatedata)
-                .on("mouseout", removedata);
+                // .attr("cx", 0)
+                // .attr("cy", 0)
 
+            .attr("cx", function(d, i) {
+                    return xscale(d['Period']);
+                })
+                .attr("cy", function(d, i) {
+                    return yscale(Math.log10(d['Period Derivative']));
+                })
+
+                .on("mouseover", updatedata)
+                .on("mouseout", removedata)
+                .attr("r", 12)
+                .attr("opacity", 0)
+                .transition()
+                .duration(200)
+                .delay(function(d,i) {return (50*i)})
+                .attr("r", 2.5)
+                .attr("opacity", 0.75)
             // update data
             circle
                 .attr("cx", function(d, i) {
