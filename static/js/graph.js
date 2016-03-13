@@ -58,10 +58,7 @@ d3.json('data',
             height = baseheight - margin.top - margin.bottom;
 
         // x related values
-        var xvalue = function(d) {
-                return data['Period'];
-            },
-            xscale = d3.scale.log()
+        var xscale = d3.scale.log()
             .domain([
                 Math.round(Math.floor(d3.min(periods) * 10000)) / 10000,
                 Math.round(Math.ceil(d3.max(periods) * 10000)) / 10000
@@ -72,13 +69,13 @@ d3.json('data',
             .ticks(5, function(d) {
                 return d.toExponential(2).replace('e', 'x10^')
             })
-            .orient("bottom");
+            .orient("bottom")
+            .innerTickSize(-height)
+            .outerTickSize(0)
+            .tickPadding(5);
 
         // y related values
-        var yvalue = function(d) {
-                return d['Period Derivative'];
-            },
-            yscale = d3.scale.linear()
+        var yscale = d3.scale.linear()
             .domain([
                 Math.floor(d3.min(periods_der)),
                 Math.ceil(d3.max(periods_der))
@@ -88,53 +85,95 @@ d3.json('data',
             .scale(yscale)
             .ticks(20)
             .orient("left")
+            .innerTickSize(-width)
+            .outerTickSize(0)
+            .tickPadding(5);
+
+
+        var zoom = d3.behavior.zoom()
+            .x(xscale)
+            .y(yscale)
+            // .scaleExtent([1, 10])
+            .on("zoom", zoomed);
+
+        function zoomed() {
+            g_xaxis.call(xAxis);
+            g_yaxis.call(yAxis);
+            console.log('zoom')
+            updategraph()
+        }
 
         // main canvas
         var canvas = d3.select('.graph')
             .append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
+            .call(zoom)
             .append("g")
             .attr("class", "points")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
+
         // y axis
-        canvas.append("g")
+        var g_yaxis = canvas.append("g")
             .attr("class", "axis axis--y")
-            .call(yAxis);
+            .attr("position", "fixed")
+        g_yaxis.call(yAxis);
 
         // x axis
-        canvas.append("g")
+        var g_xaxis = canvas.append("g")
             .attr("class", "axis axis--x")
             .attr("transform", "translate(0," + (height) + ")")
-            .call(xAxis);
+        g_xaxis.call(xAxis);
 
         // plot points
         canvas
             .append("g")
-            .selectAll('circle')
-            .data(data)
-            .enter()
-            .append("circle")
-            .attr("class", "datapoint")
-            .attr("id", function(d) {
-                return d['Pulsar']
-            })
-            .attr("cx", function(d, i) {
-                return xscale(d['Period']);
-            })
-            .attr("cy", function(d, i) {
-                return yscale(Math.log10(d['Period Derivative']));
-            })
-            .attr("r", 2.5)
-            .attr("opacity", 0.75)
-            .style('fill', function(d) {
-                if (d['Binary'] == 'Y') {
-                    return '#FF3D00'
-                } else {
-                    return '#3D5AFE'
-                }
-            })
-            .on("mouseover", updatedata)
-            .on("mouseout", removedata);
+            .attr("class", "points")
+
+        function updategraph() {
+            var circle =
+                canvas
+                .select('.points')
+                .selectAll('circle')
+                .data(data)
+
+            //remove extra data
+            circle.exit().remove()
+
+            // add new data
+            circle.enter()
+                .append("circle")
+                .attr("class", "datapoint")
+                .attr("id", function(d) {
+                    return d['Pulsar']
+                })
+                .attr("cx", function(d, i) {
+                    return xscale(d['Period']);
+                })
+                .attr("cy", function(d, i) {
+                    return yscale(Math.log10(d['Period Derivative']));
+                })
+                .attr("r", 2.5)
+                .attr("opacity", 0.75)
+                .style('fill', function(d) {
+                    if (d['Binary'] == 'Y') {
+                        return '#FF3D00'
+                    } else {
+                        return '#3D5AFE'
+                    }
+                })
+                .on("mouseover", updatedata)
+                .on("mouseout", removedata);
+
+            // update data
+            circle
+                .attr("cx", function(d, i) {
+                    return xscale(d['Period']);
+                })
+                .attr("cy", function(d, i) {
+                    return yscale(Math.log10(d['Period Derivative']));
+                })
+        }
+        updategraph()
     });

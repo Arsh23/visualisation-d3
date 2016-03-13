@@ -6,12 +6,16 @@ body {
 }
 .axis text {
     /*font: 10px sans-serif;*/
-    font-family: 'Anaheim', sans-serif;
+    font-family: 'Share Tech', sans-serif;
+    opacity: 0.75;
+    font-size: 12px;
 }
 .axis path, .axis line {
     fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
+    stroke: black;
+}
+.tick line {
+    opacity: 0.2;
 }
 .titlebox {
     padding-left: 40px;
