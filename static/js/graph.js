@@ -1,8 +1,8 @@
 var graph = d3.json('data',
     function(data) {
         data = data['data'] //data, data and also data :)
-        // console.log(data)
-        
+            // console.log(data)
+
         var updatedata = function() {
             var circle = d3.select(this);
             circle.transition()
@@ -166,6 +166,13 @@ var graph = d3.json('data',
                 .attr("id", function(d) {
                     return d['Pulsar']
                 })
+                .attr("data-legend", function(d) {
+                    if (d['Binary'] == 'Y') {
+                        return 'Binary'
+                    } else {
+                        return 'Non Binary'
+                    }
+                })
                 .style('fill', function(d) {
                     if (d['Binary'] == 'Y') {
                         return '#FF3D00'
@@ -222,6 +229,59 @@ var graph = d3.json('data',
             .attr("class", "axis axis--x")
             .attr("transform", "translate(0," + (height) + ")")
         g_xaxis.call(xAxis);
+
+
+        var legend = canvas
+            .append('g')
+            .attr("transform", "translate(" + (width - 230) + ",10)")
+        legend
+            .append('rect')
+            .attr('class', 'legend')
+            .attr('height', 50)
+            .attr('width', 220)
+            .attr('fill', 'white')
+            .style('stroke-width', 2)
+            .style('stroke', 'rgba(0,0,0,0.25)')
+
+        legend.append('text')
+            .attr("x", 5)
+            .attr("y", 15)
+            .attr('font-size', 12)
+            .attr('font-family', 'Anaheim')
+            .text('X Axis: Period (Sec) [logarithmic scale]')
+        legend.append('text')
+            .attr("x", 5)
+            .attr("y", 30)
+            .attr('font-size', 12)
+            .attr('font-family', 'Anaheim')
+            .text('Y Axis: log(Period Derivative) (Sec/sec)')
+        legend
+            .append("circle")
+            .attr('cx', 10)
+            .attr('cy', 41)
+            .attr('r', 3)
+            .attr("opacity", 0.75)
+            .style('fill', '#FF3D00')
+        legend.append('text')
+            .attr("x", 18)
+            .attr("y", 45)
+            .attr('font-size', 12)
+            .attr('font-family', 'Anaheim')
+            .text('Binary')
+        legend
+            .append("circle")
+            .attr('cx', 80)
+            .attr('cy', 41)
+            .attr('r', 3)
+            .attr("opacity", 0.75)
+            .style('fill', '#3D5AFE')
+        legend.append('text')
+            .attr("x", 88)
+            .attr("y", 45)
+            .attr('font-size', 12)
+            .attr('font-family', 'Anaheim')
+            .text('Non Binary')
+
 
         // plot points
         canvas
