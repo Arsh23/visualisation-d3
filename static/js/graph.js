@@ -1,4 +1,4 @@
-d3.json('data',
+var graph = d3.json('data',
     function(data) {
         data = data['data'] //data, data and also data :)
 
@@ -83,12 +83,12 @@ d3.json('data',
             ])
             .range([height - 0, 0]),
             yAxis = d3.svg.axis()
-                .scale(yscale)
-                .ticks(20)
-                .orient("left")
-                .innerTickSize(-width)
-                .outerTickSize(0)
-                .tickPadding(5);
+            .scale(yscale)
+            .ticks(20)
+            .orient("left")
+            .innerTickSize(-width)
+            .outerTickSize(0)
+            .tickPadding(5);
 
         //zoom function and update
         var zoom = d3.behavior.zoom()

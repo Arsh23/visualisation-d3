@@ -22,6 +22,7 @@
 
     <!-- custom js -->
     <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 
 </head>
@@ -72,15 +73,45 @@
                 <div class='graph'></div>
             </div>
             <div class='col-sm-4 infobox'>
+
                 <div class='info'>
-                    <p class='infotext'>Pulsar Name :<span class='infodata pulsarname'></span></p>
-                    <p class='infotext'>Times of Arrival :<span class='infodata toa'></span></p>
-                    <p class='infotext'>Raw Profiles :<span class='infodata raw'></span></p>
-                    <p class='infotext'>Period :<span class='infodata period'></span></p>
-                    <p class='infotext'>Period Derivative :<span class='infodata pd'></span></p>
-                    <p class='infotext'>Dispersion Measure :<span class='infodata dm'></span></p>
-                    <p class='infotext'>Timing Residuals :<span class='infodata rms'></span></p>
-                    <p class='infotext'>Binary System :<span class='infodata binary'></span></p>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info1 btn-default">Information</button>
+                        <button type="button" class="btn btn-add btn-default">Add Data</button>
+                        <button type="button" class="btn btn-features btn-default">Features</button>
+                    </div>
+                    <div class='info-1'>
+                        <p class='infotext'>Pulsar Name :<span class='infodata pulsarname'></span></p>
+                        <p class='infotext'>Times of Arrival :<span class='infodata toa'></span></p>
+                        <p class='infotext'>Raw Profiles :<span class='infodata raw'></span></p>
+                        <p class='infotext'>Period :<span class='infodata period'></span></p>
+                        <p class='infotext'>Period Derivative :<span class='infodata pd'></span></p>
+                        <p class='infotext'>Dispersion Measure :<span class='infodata dm'></span></p>
+                        <p class='infotext'>Timing Residuals :<span class='infodata rms'></span></p>
+                        <p class='infotext'>Binary System :<span class='infodata binary'></span></p>
+                    </div>
+                    <div class='info-2'>
+                        <form>
+
+                            <div class="group">
+                                <input type="text" required>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Name</label>
+                            </div>
+
+                            <div class="group">
+                                <input type="text" required>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Email</label>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class='info-3'>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
                 </div>
             </div>
         </div>
