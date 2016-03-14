@@ -68,6 +68,13 @@ def delete():
 
     return redirect('/')
 
+@app.route('/reset/')
+def reset():
+    global json
+    r = requests.get('http://msi.mcgill.ca/GSoC_NANOGrav/pulsar_data_test.json')
+    json = r.json()
+    return 'data reset'
+
 if __name__ == '__main__':
     global json
     r = requests.get('http://msi.mcgill.ca/GSoC_NANOGrav/pulsar_data_test.json')
