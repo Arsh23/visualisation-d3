@@ -73,7 +73,8 @@ def reset():
     global json
     r = requests.get('http://msi.mcgill.ca/GSoC_NANOGrav/pulsar_data_test.json')
     json = r.json()
-    return 'data reset'
+    print 'data reset'
+    return redirect('/')
 
 if __name__ == '__main__':
     global json
