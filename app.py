@@ -1,6 +1,7 @@
 from flask import Flask, request, session, g, redirect, url_for, render_template, jsonify
 import requests
 import json
+import os
 
 app = Flask(__name__)
 json = []
@@ -71,5 +72,6 @@ if __name__ == '__main__':
     global json
     r = requests.get('http://msi.mcgill.ca/GSoC_NANOGrav/pulsar_data_test.json')
     json = r.json()
-    print 'loading json'
-    app.run(debug=True)
+    print 'json loaded'
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True,port=port)
