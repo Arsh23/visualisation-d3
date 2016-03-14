@@ -326,7 +326,6 @@ var graph = d3.json('data',
 $(document).on('click', '.btn-hide',
     function() {
         if (selected != 'none') {
-            // var circle = d3.select(this);
             selected = 'none'
             selectedcircle
                 .transition()
@@ -346,3 +345,10 @@ $(document).on('click', '.btn-hide',
         }
     }
 );
+$(function() {
+    $('#form').submit(function() {
+        $('.pulsar-id').val(selected)
+        // alert('yo - ' + $('.pulsar-id').val())
+        return true;
+    });
+});

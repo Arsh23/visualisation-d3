@@ -93,8 +93,11 @@
                         <p class='infotext'>Timing Residuals :<span class='infodata rms'></span></p>
                         <p class='infotext'>Binary System :<span class='infodata binary'></span></p>
                         <div class="btn-group spc2">
-                            <button type="button" class="btn btn-hide btn-default"> Unselect node </button>
-                            <button type="button" class="btn btn-delete btn-default">Delete Node</button>
+                            <form id='form' method='post' action='/delete/'>
+                                <button type="button" class="btn btn-hide btn-default"> Unselect node </button>
+                                <input type="text" class="form-control pulsar-id" name='Pulsar-id' style='display: none;'>
+                                <button type="submit" id='submit' class="btn btn-delete btn-default">Delete Node</button>
+                            </form>
                         </div>
                     </div>
                     <div class='info-2'>

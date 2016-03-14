@@ -39,7 +39,7 @@ def add():
     global json
     addjson = {}
     if request.method == 'POST':
-        print request.form
+        # print request.form
         addjson['Pulsar'] = request.form['Pulsar']
         addjson['TOAs'] = request.form['TOAs']
         addjson['Raw Profiles'] = request.form['Raw Profiles']
@@ -53,6 +53,19 @@ def add():
         return redirect('/')
     else:
         return 'error'
+
+@app.route('/delete/', methods=['GET', 'POST'])
+def delete():
+    global json
+    if request.method == 'POST':
+        # print request.form['Pulsar-id']
+        if request.form['Pulsar-id'] != 'none':
+            for j in json:
+                if j['Pulsar'] == request.form['Pulsar-id']:
+                    json.remove(j)
+                    break
+
+    return redirect('/')
 
 if __name__ == '__main__':
     global json
