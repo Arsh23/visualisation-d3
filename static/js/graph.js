@@ -323,23 +323,26 @@ var graph = d3.json('data',
         updategraph()
     });
 
-// $(document).on('click', '.btn-hide',
-//     function() {
-//         if (selected == 'none') {
-//             var circle = d3.select(this);
-//             circle.transition().duration(150)
-//                 .attr("r", 2.5)
-//                 .style('fill', selectedcirclecolor)
-//                 .style('stroke-width', 0)
-//                 .style('stroke', 'rgba(0,0,0,0)');
-//             $('.pulsarname').html('')
-//             $('.toa').html('')
-//             $('.raw').html('')
-//             $('.period').html('')
-//             $('.pd').html('')
-//             $('.dm').html('')
-//             $('.rms').html('')
-//             $('.binary').html('')
-//         }
-//     }
-// );
+$(document).on('click', '.btn-hide',
+    function() {
+        if (selected != 'none') {
+            // var circle = d3.select(this);
+            selected = 'none'
+            selectedcircle
+                .transition()
+                .duration(150)
+                .attr("r", 2.5)
+                .style('fill', selectedcirclecolor)
+                .style('stroke-width', 0)
+                .style('stroke', 'rgba(0,0,0,0)');
+            $('.pulsarname').html('')
+            $('.toa').html('')
+            $('.raw').html('')
+            $('.period').html('')
+            $('.pd').html('')
+            $('.dm').html('')
+            $('.rms').html('')
+            $('.binary').html('')
+        }
+    }
+);
