@@ -340,3 +340,14 @@ $(function() {
         return true;
     });
 });
+
+// 
+// setInterval(function(){
+//     d3.json('data',
+//         function(data) {
+//             data = data['data'] //data, data and also data :)
+//
+//             // initializegraph(data)
+//             updategraph(data)
+//         });
+//  }, 2000);
